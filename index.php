@@ -7,19 +7,29 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="traitement.php" method="POST">
-        <div class="form-group">
-            <label for="nom">Nom: </label>
-            <input type="text" id="nom" name="nom">
-        </div>
-        <div class="form-group">
-            <label for="mail">E-mail: </label>
-            <input type="email" name="email" id="mail">
-        </div>
-        <div class="form-group">
-            <input type="submit" value="Envoyer">
-        </div>
-    </form>
+    <?php
+        if(isset($_COOKIE['nom']))
+        {
+            echo "<div>Bonjour ".$_COOKIE['nom']."</div>";
+        }else{
+    ?>
+        <form action="traitement.php" method="POST">
+            <div class="form-group">
+                <label for="nom">Nom: </label>
+                <input type="text" id="nom" name="nom">
+            </div>
+            <div class="form-group">
+                <label for="mail">E-mail: </label>
+                <input type="email" name="email" id="mail">
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Envoyer">
+            </div>
+        </form>
+    <?php
+        }
+    ?>
+    
     <?php
         if(isset($_GET['error']))
         {
@@ -27,11 +37,6 @@
         }
 
 
-
-        if(isset($_COOKIE['nom']))
-        {
-            echo $_COOKIE['nom'];
-        }
 
     ?>
 </body>
